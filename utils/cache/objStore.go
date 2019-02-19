@@ -1,8 +1,8 @@
 package cache
 
 import (
-	"errors"
 	"container/list"
+	"errors"
 	"sync"
 )
 
@@ -20,13 +20,12 @@ type IObjStore interface {
 	Delete(interface{}, string) error
 	Update(interface{}, string, interface{}) error
 	List() []IThreadSafeMap
-
 }
 
 type ObjStore struct {
 	cache map[interface{}]IThreadSafeMap
-	cap int
-	len int
+	cap   int
+	len   int
 
 	lock sync.RWMutex
 
@@ -39,10 +38,10 @@ func NewObjStore(cap int) IObjStore {
 	}
 	return &ObjStore{
 		cache: make(map[interface{}]IThreadSafeMap, cap),
-		cap: cap,
-		len: 0,
-		lock: sync.RWMutex{},
-		keys: list.New(),
+		cap:   cap,
+		len:   0,
+		lock:  sync.RWMutex{},
+		keys:  list.New(),
 	}
 }
 
@@ -65,7 +64,7 @@ func (obj *ObjStore) Add(section interface{}, key string, value interface{}) err
 
 	if sectionMap, ok := obj.cache[section]; ok {
 		return sectionMap.Add(key, value)
-	}else{
+	} else {
 		sectionMap := NewThreadSafeMap(THREAD_SAFE_MAP_MAX_CAP)
 		err := sectionMap.Add(key, value)
 		if err != nil {
@@ -134,11 +133,11 @@ func (obj *ObjStore) Delete(section interface{}, key string) error {
 
 	if data, ok := obj.cache[section]; !ok {
 		return errors.New("section not found")
-	}else{
+	} else {
 		_, error := data.Get(key)
 		if error != nil {
 			return error
-		}else{
+		} else {
 			err := data.Delete(key)
 			// 删除节点
 			if data.Len() <= 0 {
@@ -160,11 +159,11 @@ func (obj *ObjStore) Update(section interface{}, key string, value interface{}) 
 
 	if data, ok := obj.cache[section]; !ok {
 		return errors.New("section not found")
-	}else{
+	} else {
 		_, error := data.Get(key)
 		if error != nil {
 			return data.Add(key, value)
-		}else{
+		} else {
 			return data.Update(key, value)
 		}
 	}
@@ -179,4 +178,3 @@ func (obj *ObjStore) List() []IThreadSafeMap {
 
 	return objList
 }
-

@@ -1,8 +1,8 @@
 package cache
 
 import (
-	"testing"
 	"strconv"
+	"testing"
 )
 
 func TestNewThreadSafeMap(t *testing.T) {
@@ -10,7 +10,7 @@ func TestNewThreadSafeMap(t *testing.T) {
 
 	threadMap = NewThreadSafeMap(100)
 
-	for i:= 1; i <= 1000; i++ {
+	for i := 1; i <= 1000; i++ {
 		threadMap.Add(strconv.Itoa(i), i)
 	}
 
@@ -19,7 +19,7 @@ func TestNewThreadSafeMap(t *testing.T) {
 	_, err := threadMap.Get("1")
 	if err != nil {
 		t.Fatal(err.Error())
-	}else{
+	} else {
 		threadMap.Add("1001", 1001)
 	}
 
@@ -30,5 +30,3 @@ func TestNewThreadSafeMap(t *testing.T) {
 
 	t.Fatal(threadMap.List(), threadMap.Len(), data)
 }
-
-

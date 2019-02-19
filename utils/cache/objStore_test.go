@@ -15,6 +15,3 @@ func TestNewObjStore(t *testing.T) {
 	}
 	t.Fatal(data)
 }
-
-
-

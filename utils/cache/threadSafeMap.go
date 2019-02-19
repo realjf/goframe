@@ -1,9 +1,9 @@
 package cache
 
 import (
-	"sync"
-	"errors"
 	"container/list"
+	"errors"
+	"sync"
 )
 
 const (
@@ -42,14 +42,13 @@ func NewThreadSafeMap(cap int) IThreadSafeMap {
 		cap = THREAD_SAFE_MAP_MAX_CAP
 	}
 	return &ThreadSafeMap{
-		cap: cap,
+		cap:   cap,
 		len:   0,
 		lock:  sync.RWMutex{},
 		items: make(map[string]interface{}, cap),
-		keys: list.New(),
+		keys:  list.New(),
 	}
 }
-
 
 func (t *ThreadSafeMap) Add(key string, item interface{}) error {
 	if key == "" || item == nil {
@@ -92,7 +91,6 @@ func (t *ThreadSafeMap) exist(key string) (bool, *list.Element) {
 
 	return false, nil
 }
-
 
 func (t *ThreadSafeMap) Get(key string) (interface{}, error) {
 	if key == "" {
@@ -201,7 +199,6 @@ func (t *ThreadSafeMap) Update(key string, item interface{}) error {
 
 	return nil
 }
-
 
 func (t *ThreadSafeMap) Len() int {
 	t.lock.RLock()
