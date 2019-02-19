@@ -37,7 +37,7 @@ func (r *Router) InitRouter() *Router {
 
 	// logs
 	if r.Config.IsLog() {
-		r.Router.Use(middleware.Logger)
+		r.Router.Use(middleware.AccessLogger)
 	}
 
 	// authentication

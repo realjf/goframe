@@ -1,8 +1,6 @@
 package middleware
 
 import (
-	"fmt"
-	"log"
 	"net/http"
 	"runtime/debug"
 )
@@ -14,8 +12,8 @@ func SafeHandler(next http.Handler) http.Handler {
 			if e, ok := recover().(error); ok {
 				http.Error(w, e.Error(), http.StatusInternalServerError)
 				// 输出自定义页面
-				log.Println(fmt.Sprintf("[Warning]: panic in %+v - %+v", r.RequestURI, e))
-				log.Println(string(debug.Stack()))
+				Logger.Logger.Warningf("[Warning]: panic in %+v - %+v", r.RequestURI, e)
+				Logger.Logger.Info(string(debug.Stack()))
 			}
 		}()
 		next.ServeHTTP(w, r)

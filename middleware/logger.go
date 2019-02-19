@@ -15,6 +15,10 @@ var format = logging.MustStringFormatter(
 	`%{color}%{time:15:04:05.000} %{shortfunc} ▶ %{level:.4s} %{id:04x}%{color:reset} %{message}`,
 )
 
+var (
+	Logger  *Log
+)
+
 type Log struct {
 	Logger *logging.Logger
 }
@@ -46,8 +50,7 @@ func (l *Log) Init() *Log {
 }
 
 // log
-func Logger(next http.Handler) http.Handler {
-	Logger := NewLogger()
+func AccessLogger(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if matched, _ := regexp.Match("^/assets/.*", []byte(r.RequestURI)); !matched {
 			//log.Println(fmt.Sprintf("%s %s %s | %s", r.Method, r.RequestURI, r.Proto, utils.GetIPAdress(r)))

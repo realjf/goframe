@@ -2,20 +2,20 @@ package main
 
 import (
 	"flag"
-	"golang.org/x/net/http2"
 	"goframe/config"
+	"goframe/exception"
+	"goframe/middleware"
 	"goframe/router"
+	"golang.org/x/net/http2"
 	"log"
 	"net/http"
 	"time"
-	"goframe/middleware"
-	"goframe/exception"
+	"goframe/db"
 )
 
 var (
 	Config             config.IConfig
 	NotifyReloadConfig chan int
-	Log *middleware.Log
 
 	// flag启动参数
 	ConfigPath string
@@ -45,14 +45,14 @@ func init() {
 	}()
 
 	// init log
-	Log = middleware.NewLogger().Init()
+	middleware.Logger = middleware.NewLogger().Init()
 
 	// init db、cache、control and so on
-
+	db.NewMysql(Config).Init()
 }
 
 func main() {
-	r := router.NewRouter(Config, Log).InitRouter()
+	r := router.NewRouter(Config, middleware.Logger).InitRouter()
 	log.Println("Listen On", Config.GetAddress())
 	server := http.Server{
 		Addr:         Config.GetAddress(),
@@ -66,16 +66,16 @@ func main() {
 		err := http2.ConfigureServer(&server, &http2.Server{})
 		exception.CheckError(err, 11)
 	}
-	Log.Logger.Info(Config.GetHttpVersion())
+	middleware.Logger.Logger.Info(Config.GetHttpVersion())
 
 	if Config.IsHttps() {
 		ca := Config.GetTSL()
 		if CaKeyPath != "" && CaCertPath != "" {
-			Log.Logger.Fatal(server.ListenAndServeTLS(CaCertPath, CaKeyPath))
+			middleware.Logger.Logger.Fatal(server.ListenAndServeTLS(CaCertPath, CaKeyPath))
 		} else {
-			Log.Logger.Fatal(server.ListenAndServeTLS(ca.Cert, ca.Key))
+			middleware.Logger.Logger.Fatal(server.ListenAndServeTLS(ca.Cert, ca.Key))
 		}
 	} else {
-		Log.Logger.Fatal(server.ListenAndServe())
+		middleware.Logger.Logger.Fatal(server.ListenAndServe())
 	}
 }
