@@ -1,12 +1,12 @@
 package config
 
 import (
-	"sync"
+	"fmt"
 	"goframe/exception"
 	"goframe/utils"
-	"fmt"
-	"io/ioutil"
 	"gopkg.in/yaml.v2"
+	"io/ioutil"
+	"sync"
 )
 
 type ConfigYaml struct {
@@ -15,7 +15,6 @@ type ConfigYaml struct {
 	Once sync.Once // 实现单例模式
 	Lock sync.RWMutex
 }
-
 
 func NewConfigYaml() IConfig {
 	return &ConfigYaml{
@@ -45,7 +44,6 @@ func (c *ConfigYaml) LoadConfigFile(path string) IConfig {
 
 	return c
 }
-
 
 func (c *ConfigYaml) GetConfigData() ConfigData {
 	return c.Data
@@ -134,4 +132,3 @@ func (c *ConfigYaml) GetHttpVersion() string {
 	}
 	return "HTTP/" + httpVersion
 }
-

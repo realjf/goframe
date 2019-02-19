@@ -2,12 +2,12 @@ package db
 
 import (
 	"database/sql"
-	"goframe/config"
 	"fmt"
-	"goframe/utils"
+	"goframe/config"
 	"goframe/exception"
-	"time"
 	"goframe/middleware"
+	"goframe/utils"
+	"time"
 )
 
 var (
@@ -15,24 +15,24 @@ var (
 )
 
 type MySQLDriver struct {
-	Username string
-	Password string
-	DbName string
-	Host string
-	Port string
-	Charset string
+	Username     string
+	Password     string
+	DbName       string
+	Host         string
+	Port         string
+	Charset      string
 	MaxOpenConns int
 }
 
 func NewMysql(config config.IConfig) *MySQLDriver {
 	configData := config.GetConfigData()
 	return &MySQLDriver{
-		Username: configData.Mysql.Username,
-		Password: configData.Mysql.Password,
-		Host: configData.Mysql.Host,
-		Port: utils.ToString(configData.Mysql.Port),
-		Charset: configData.Mysql.Charset,
-		DbName: configData.Mysql.Dbname,
+		Username:     configData.Mysql.Username,
+		Password:     configData.Mysql.Password,
+		Host:         configData.Mysql.Host,
+		Port:         utils.ToString(configData.Mysql.Port),
+		Charset:      configData.Mysql.Charset,
+		DbName:       configData.Mysql.Dbname,
 		MaxOpenConns: configData.Mysql.MaxOpenConns,
 	}
 }
@@ -54,5 +54,3 @@ func (db *MySQLDriver) Init() {
 
 	middleware.Logger.Logger.Info("Init db ...")
 }
-
-

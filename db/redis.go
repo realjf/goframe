@@ -4,6 +4,7 @@ import (
 	"github.com/gomodule/redigo/redis"
 	"goframe/config"
 	"goframe/utils"
+	"goframe/exception"
 )
 
 var RedisClient *redis.Conn
@@ -22,7 +23,9 @@ func NewRedis(config config.IConfig) *RedisDriver {
 }
 
 func (r *RedisDriver) Init() {
+	if r.Host == "" || r.Port == "" {
+		exception.CheckError(exception.NewError("redis config is error"), 4001)
+	}
 
+	
 }
-
-
