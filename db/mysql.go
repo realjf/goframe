@@ -8,6 +8,7 @@ import (
 	"goframe/middleware"
 	"goframe/utils"
 	"time"
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var (
@@ -52,5 +53,5 @@ func (db *MySQLDriver) Init() {
 	DbConn.SetMaxOpenConns(db.MaxOpenConns)
 	DbConn.SetConnMaxLifetime(time.Second * time.Duration(60))
 
-	middleware.Logger.Logger.Info("Init db ...")
+	middleware.Logger.Logger.Info("init db ...")
 }

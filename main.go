@@ -7,7 +7,6 @@ import (
 	"goframe/middleware"
 	"goframe/router"
 	"golang.org/x/net/http2"
-	"log"
 	"net/http"
 	"time"
 	"goframe/db"
@@ -33,7 +32,7 @@ func init() {
 	flag.Parse()
 
 	// init config
-	Config = config.NewConfig().LoadConfigFile(ConfigPath)
+	Config = config.NewConfigYaml().LoadConfigFile(ConfigPath)
 
 	// watch config file to reload
 	NotifyReloadConfig = make(chan int, 1)
@@ -56,7 +55,7 @@ func init() {
 
 func main() {
 	r := router.NewRouter(Config, middleware.Logger).InitRouter()
-	log.Println("Listen On", Config.GetAddress())
+	middleware.Logger.Logger.Info("Listen On", Config.GetAddress())
 	server := http.Server{
 		Addr:         Config.GetAddress(),
 		Handler:      r.Router,

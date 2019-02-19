@@ -6,6 +6,7 @@ import (
 	"goframe/config"
 	"goframe/exception"
 	"goframe/utils"
+	"goframe/middleware"
 )
 
 var RedisClient *redis.Client
@@ -39,5 +40,5 @@ func (r *RedisDriver) Init() {
 		exception.CheckError(exception.NewError(err.Error()), 4002)
 	}
 
-	//middleware.Logger.Logger.Info("init redis...")
+	middleware.Logger.Logger.Info("init redis...")
 }
