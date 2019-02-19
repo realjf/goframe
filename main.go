@@ -49,6 +49,9 @@ func init() {
 
 	// init db、cache、control and so on
 	db.NewMysql(Config).Init()
+	db.NewMemcache(Config).Init()
+	db.NewRedis(Config).Init()
+
 }
 
 func main() {
