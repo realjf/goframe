@@ -2,12 +2,12 @@ package api
 
 import (
 	"fmt"
-	"kboard/config"
-	"kboard/exception"
-	"kboard/template"
-	"kboard/utils"
+	"goframe/config"
+	"goframe/exception"
+	"goframe/template"
 	"log"
 	"net/http"
+	"goframe/utils"
 )
 
 type iApi interface {

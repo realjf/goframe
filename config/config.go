@@ -3,11 +3,11 @@ package config
 import (
 	"fmt"
 	"io/ioutil"
-	"kboard/exception"
-	"kboard/utils"
 	"sync"
 
 	"github.com/BurntSushi/toml"
+	"goframe/exception"
+	"goframe/utils"
 )
 
 type IConfig interface {

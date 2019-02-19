@@ -2,10 +2,9 @@ package router
 
 import (
 	"flag"
-	"kboard/config"
-	"kboard/middleware"
+	"goframe/config"
+	"goframe/middleware"
 	"net/http"
-
 	"github.com/gorilla/mux"
 )
 
@@ -33,7 +32,8 @@ func (r *Router) InitRouter() *Router {
 	r.Router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir(dir))))
 
 	// match url
-	UrlRegister(r)
+	RegisterUrl(r)
+	RegisterApi(r)
 
 	// logs
 	if r.Config.IsLog() {

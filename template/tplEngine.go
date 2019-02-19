@@ -3,7 +3,7 @@ package template
 import (
 	"encoding/json"
 	"html/template"
-	"kboard/exception"
+	"goframe/exception"
 	"net/http"
 )
 

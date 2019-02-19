@@ -2,8 +2,8 @@ package config
 
 import (
 	"sync"
-	"kboard/exception"
-	"kboard/utils"
+	"goframe/exception"
+	"goframe/utils"
 	"fmt"
 	"io/ioutil"
 	"gopkg.in/yaml.v2"

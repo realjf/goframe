@@ -3,13 +3,13 @@ package main
 import (
 	"flag"
 	"golang.org/x/net/http2"
-	"kboard/config"
-	"kboard/exception"
-	"kboard/router"
+	"goframe/config"
+	"goframe/router"
 	"log"
 	"net/http"
 	"time"
-	"kboard/middleware"
+	"goframe/middleware"
+	"goframe/exception"
 )
 
 var (

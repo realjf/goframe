@@ -2,10 +2,10 @@ package control
 
 import (
 	"fmt"
-	"kboard/config"
-	"kboard/exception"
-	"kboard/template"
-	"kboard/utils"
+	"goframe/config"
+	"goframe/exception"
+	"goframe/template"
+	"goframe/utils"
 	"log"
 	"net/http"
 )

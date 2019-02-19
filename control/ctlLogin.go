@@ -1,8 +1,8 @@
 package control
 
 import (
-	"kboard/config"
-	"kboard/template"
+	"goframe/config"
+	"goframe/template"
 	"net/http"
 )
 
