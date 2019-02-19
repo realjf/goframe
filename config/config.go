@@ -21,8 +21,6 @@ type IConfig interface {
 	IsAuth() bool // 是否开启鉴权
 	IsHttp2() bool
 	GetHttpVersion() string
-	GetK8sHostName() string
-	GetK8sPort() int
 	GetConfigData() ConfigData
 }
 
@@ -68,14 +66,6 @@ type ConfigData struct {
 		Host    string
 		Port    int
 		Timeout int
-	}
-	Kubernetes struct {
-		Host string
-		Port int
-	}
-	Etcd struct {
-		Host string
-		Port int
 	}
 }
 
@@ -178,14 +168,6 @@ func (c *Config) IsHttp2() bool {
 		return true
 	}
 	return false
-}
-
-func (c *Config) GetK8sHostName() string {
-	return c.Data.Kubernetes.Host
-}
-
-func (c *Config) GetK8sPort() int {
-	return c.Data.Kubernetes.Port
 }
 
 func (c *Config) GetHttpVersion() string {

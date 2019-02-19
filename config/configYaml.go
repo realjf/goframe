@@ -120,14 +120,6 @@ func (c *ConfigYaml) IsHttp2() bool {
 	return false
 }
 
-func (c *ConfigYaml) GetK8sHostName() string {
-	return c.Data.Kubernetes.Host
-}
-
-func (c *ConfigYaml) GetK8sPort() int {
-	return c.Data.Kubernetes.Port
-}
-
 func (c *ConfigYaml) GetHttpVersion() string {
 	var httpVersion string
 	switch c.Data.Cluster.HttpVersion {
