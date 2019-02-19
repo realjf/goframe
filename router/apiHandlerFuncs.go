@@ -8,12 +8,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
-
 func RegisterApi(r *Router) {
 	// api的路由特殊处理
 	r.Router.HandleFunc("/api/user/{action:[a-z]+}", I_UserHandler(r.Config))
 	r.Router.HandleFunc("/api/login/{action:[a-z]+}", I_LoginHandler(r.Config))
-
 
 }
 
@@ -38,4 +36,3 @@ func I_LoginHandler(c config.IConfig) (f func(http.ResponseWriter, *http.Request
 
 	return handler
 }
-

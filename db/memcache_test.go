@@ -13,6 +13,6 @@ func TestNewMemcache(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	res1,_,_ := McClient.Get("hello")
+	res1, _, _ := McClient.Get("hello")
 	t.Fatal(res1)
 }

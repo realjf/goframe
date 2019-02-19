@@ -22,7 +22,7 @@ mysql:
 # redis
 redis:
   host: "192.168.37.133"
-  port: 8001 # int
+  port: 6379 # int
   timeout: 60
 
 # memcache

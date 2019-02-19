@@ -5,6 +5,7 @@ import (
 	"github.com/pangudashu/memcache"
 	"goframe/config"
 	"goframe/exception"
+	"goframe/middleware"
 	"goframe/utils"
 	"time"
 )
@@ -38,4 +39,6 @@ func (mc *McDriver) Init() {
 	McClient.SetRemoveBadServer(true)
 
 	McClient.SetTimeout(time.Second*2, time.Second, time.Second)
+
+	middleware.Logger.Logger.Info("init memcache...")
 }

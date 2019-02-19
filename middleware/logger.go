@@ -1,11 +1,11 @@
 package middleware
 
 import (
-	"net/http"
-	"regexp"
 	"github.com/op/go-logging"
 	"goframe/utils"
+	"net/http"
 	"os"
+	"regexp"
 )
 
 // Example format string. Everything except the message has a custom color
@@ -16,7 +16,7 @@ var format = logging.MustStringFormatter(
 )
 
 var (
-	Logger  *Log
+	Logger *Log
 )
 
 type Log struct {
