@@ -1,2 +1,2 @@
 # goframe
-a framework of go language
+a web framework of go language
