@@ -15,7 +15,7 @@ func NewAuthentication() *Authentication {
 	}
 }
 
-// Initialize it somewhere
+// 初始化授权口令
 func (amw *Authentication) Populate() {
 	amw.tokenUsers["00000000"] = "user0"
 	amw.tokenUsers["aaaaaaaa"] = "userA"

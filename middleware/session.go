@@ -8,15 +8,17 @@ import (
 
 type Session struct {
 	tokenUsers map[string]string
+	cookieName string
 }
 
-func NewSession() *Session {
+func NewSession(cookieName string) *Session {
 	return &Session{
 		tokenUsers: make(map[string]string),
+		cookieName: cookieName,
 	}
 }
 
-// Initialize it somewhere
+// 会话token
 func (s *Session) Populate() {
 	s.tokenUsers["00000000"] = "user0"
 	s.tokenUsers["aaaaaaaa"] = "userA"
@@ -41,7 +43,7 @@ func (s *Session) Middleware(next http.Handler) http.Handler {
 
 func (s *Session) SetCookie(w http.ResponseWriter, r *http.Request) {
 	http.SetCookie(w, &http.Cookie{
-		Name:     "hello",
+		Name:     s.cookieName,
 		Value:    "hello",
 		HttpOnly: true,
 		Expires:  time.Now().Add(1 * time.Hour),
