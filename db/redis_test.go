@@ -10,7 +10,7 @@ func TestNewRedis(t *testing.T) {
 	config := config.NewConfigYaml().LoadConfigFile("../config/config.yaml")
 	NewRedis(config).Init()
 
-	err := RedisClient.Set("hello", "world", time.Second * time.Duration(3600)).Err()
+	err := RedisClient.Set("hello", "world", time.Second*time.Duration(3600)).Err()
 	if err != nil {
 		t.Fatal(err.Error())
 	}

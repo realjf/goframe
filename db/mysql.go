@@ -3,12 +3,12 @@ package db
 import (
 	"database/sql"
 	"fmt"
+	_ "github.com/go-sql-driver/mysql"
 	"goframe/config"
 	"goframe/exception"
 	"goframe/middleware"
 	"goframe/utils"
 	"time"
-	_ "github.com/go-sql-driver/mysql"
 )
 
 var (
@@ -47,7 +47,8 @@ func (db *MySQLDriver) Init() {
 		db.DbName,
 		db.Charset)
 
-	DbConn, err := sql.Open("mysql", dataSourceName)
+	var err error
+	DbConn, err = sql.Open("mysql", dataSourceName)
 	exception.CheckError(err, 3000)
 	DbConn.SetMaxIdleConns(2)
 	DbConn.SetMaxOpenConns(db.MaxOpenConns)

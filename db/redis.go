@@ -5,8 +5,8 @@ import (
 	"github.com/go-redis/redis"
 	"goframe/config"
 	"goframe/exception"
-	"goframe/utils"
 	"goframe/middleware"
+	"goframe/utils"
 )
 
 var RedisClient *redis.Client
