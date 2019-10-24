@@ -45,21 +45,6 @@ func Addslashes(v string) string {
 	return string(buf[:pos])
 }
 
-func ToString(arg interface{}) string {
-	switch arg.(type) {
-	case int:
-		return strconv.Itoa(arg.(int))
-	case int64:
-		return strconv.FormatInt(arg.(int64), 10)
-	case []byte:
-		return string(arg.([]byte))
-	case string:
-		return arg.(string)
-	default:
-		return ""
-	}
-}
-
 func IsValid(name string) bool {
 	if match, _ := regexp.MatchString("^[a-z]([-a-z0-9]*[a-z0-9])?$", name); !match {
 		return false
@@ -106,6 +91,23 @@ func JsonToArr(json string) []interface{} {
 	return data
 }
 
+func ToString(arg interface{}) string {
+	switch arg.(type) {
+	case int, int8, int16:
+		return strconv.Itoa(arg.(int))
+	case int32, int64:
+		return strconv.FormatInt(arg.(int64), 10)
+	case []byte:
+		return string(arg.([]byte))
+	case float32, float64:
+		return strconv.FormatFloat(arg.(float64), 'f', 2, 32)
+	case string:
+		return arg.(string)
+	default:
+		return ""
+	}
+}
+
 func ToInt64(value interface{}) int64 {
 	val := reflect.ValueOf(value)
 	var d int64
@@ -115,8 +117,15 @@ func ToInt64(value interface{}) int64 {
 		d = val.Int()
 	case uint, uint8, uint16, uint32, uint64:
 		d = int64(val.Uint())
+	case float32, float64:
+		d = int64(val.Float())
 	case string:
-		d, err = strconv.ParseInt(val.String(), 10, 64)
+		e, err1 := strconv.ParseFloat(val.String(), 64)
+		if err1 != nil {
+			d, err = strconv.ParseInt(val.String(), 10, 64)
+		}else{
+			d = int64(e)
+		}
 	default:
 		err = fmt.Errorf("ToInt64 need numeric not `%T`", value)
 	}
@@ -135,12 +144,21 @@ func ToInt(value interface{}) int {
 		d = int(val.Int())
 	case uint, uint8, uint16, uint32, uint64:
 		d = int(val.Uint())
+	case float32, float64:
+		d = int(val.Float())
 	case string:
-		d, err = strconv.Atoi(val.String())
+		e, err1 := strconv.ParseFloat(val.String(), 32)
+		if err1 != nil {
+			d, err = strconv.Atoi(val.String())
+		}else{
+			d = int(e)
+		}
+
 	default:
 		err = fmt.Errorf("ToInt64 need numeric not `%T`", value)
 	}
 	if err != nil {
+		log.Println(err)
 		d = 0
 	}
 
