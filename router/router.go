@@ -51,7 +51,7 @@ func (r *Router) InitRouter() *Router {
 	r.Router.Use(middleware.SafeHandler)
 
 	// jwt
-	r.Router.Use(middleware.JWT)
+	//r.Router.Use(middleware.JWT)
 
 	return r
 }

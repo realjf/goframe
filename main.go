@@ -3,13 +3,15 @@ package main
 import (
 	"flag"
 	"goframe/config"
+	"goframe/db"
+	"goframe/db/memcache"
+	"goframe/db/mysql"
 	"goframe/exception"
 	"goframe/middleware"
 	"goframe/router"
 	"golang.org/x/net/http2"
 	"net/http"
 	"time"
-	"goframe/db"
 )
 
 var (
@@ -47,8 +49,8 @@ func init() {
 	middleware.Logger = middleware.NewLogger().Init()
 
 	// init db、cache、control and so on
-	db.NewMysql(Config).Init()
-	db.NewMemcache(Config).Init()
+	mysql.NewMysql(Config).Init()
+	memcache.NewMemcache(Config).Init()
 	db.NewRedis(Config).Init()
 
 }
