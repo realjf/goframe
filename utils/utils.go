@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"goframe/crypto/md5"
 	"net"
 	"net/http"
 	"os"
@@ -11,7 +12,7 @@ import (
 	"strings"
 	"time"
 	"unicode"
-
+	"log"
 	"github.com/bitly/go-simplejson"
 )
 
@@ -463,4 +464,12 @@ func LcFirst(str string) string {
 		return string(unicode.ToLower(v)) + str[i+1:]
 	}
 	return ""
+}
+
+func EncodeMD5(s string) string {
+	dst, err := md5.Encrypt(s)
+	if err != nil {
+		return ""
+	}
+	return dst
 }

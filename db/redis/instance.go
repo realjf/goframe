@@ -7,7 +7,7 @@ var (
 )
 
 func Instance(name ...string) *Redis {
-	group := DefaultGroupName
+	group := DEFAULT_GROUP_NAME
 	if len(name) > 0 && name[0] != "" {
 		group = name[0]
 	}

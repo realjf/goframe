@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	DefaultGroupName = "default"
-	DefaultRedisPort = 6379
+	DEFAULT_GROUP_NAME = "default"
+	DEFAULT_REDIS_PORT = 6379
 )
 
 var (
@@ -20,7 +20,7 @@ var (
 )
 
 func SetConfigByStr(str string, name ...string) error {
-	group := DefaultGroupName
+	group := DEFAULT_GROUP_NAME
 	if len(name) > 0 {
 		group = name[0]
 	}
@@ -34,7 +34,7 @@ func SetConfigByStr(str string, name ...string) error {
 }
 
 func GetConfig(name ...string) (config Config, ok bool) {
-	group := DefaultGroupName
+	group := DEFAULT_GROUP_NAME
 	if len(name) > 0 {
 		group = name[0]
 	}
@@ -45,7 +45,7 @@ func GetConfig(name ...string) (config Config, ok bool) {
 }
 
 func RemoveConfig(name ...string) {
-	group := DefaultGroupName
+	group := DEFAULT_GROUP_NAME
 	if len(name) > 0 {
 		group = name[0]
 	}
@@ -64,7 +64,7 @@ func ConfigFromStr(str string) (config Config, err error) {
 			Passwd: array[4],
 		}
 		if config.Port == 0 {
-			config.Port = DefaultRedisPort
+			config.Port = DEFAULT_REDIS_PORT
 		}
 		if v, ok := parse["maxIdle"]; ok {
 			config.MaxIdle = gconv.Int(v)
@@ -89,7 +89,7 @@ func ConfigFromStr(str string) (config Config, err error) {
 			Passwd: array[4],
 		}
 		if config.Port == 0 {
-			config.Port = DefaultRedisPort
+			config.Port = DEFAULT_REDIS_PORT
 		}
 	} else {
 		err = gerror.Newf(`invalid redis configuration: "%s"`, str)

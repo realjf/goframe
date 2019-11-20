@@ -9,9 +9,9 @@ import (
 )
 
 const (
-	DefaultPoolIdleTimeout = 60 * time.Second
-	DefaultPoolConnTImeout = 10 * time.Second
-	DefaultPoolMaxLifetime = 60 * time.Second
+	DEFAULT_POOL_IDLE_TIMEOUT = 60 * time.Second
+	DEFAULT_POOL_CONN_TIMEOUT = 10 * time.Second
+	DEFAULT_POOL_MAX_LIFETIME = 60 * time.Second
 )
 
 type Redis struct {
@@ -49,13 +49,13 @@ var (
 
 func New(config Config) *Redis {
 	if config.IdleTimeout == 0 {
-		config.IdleTimeout = DefaultPoolIdleTimeout
+		config.IdleTimeout = DEFAULT_POOL_IDLE_TIMEOUT
 	}
 	if config.ConnectTimeout == 0 {
-		config.ConnectTimeout = DefaultPoolConnTImeout
+		config.ConnectTimeout = DEFAULT_POOL_CONN_TIMEOUT
 	}
 	if config.MaxConnLifetime == 0 {
-		config.MaxConnLifetime = DefaultPoolMaxLifetime
+		config.MaxConnLifetime = DEFAULT_POOL_MAX_LIFETIME
 	}
 
 	return &Redis{
