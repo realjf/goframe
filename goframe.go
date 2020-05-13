@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"goframe/server"
-
 )
 
 var (
@@ -15,8 +14,6 @@ var (
 	defaultServer *server.Server
 )
 
-
-
 func init() {
 	// 启动参数处理
 	// 配置文件路径
@@ -27,13 +24,11 @@ func init() {
 	flag.Parse()
 }
 
-
 func NewServer(configPath string) *server.Server {
 	return &server.Server{
-		ConfigPath:configPath,
+		ConfigPath: configPath,
 	}
 }
-
 
 func DefaultServer() *server.Server {
 	if defaultServer != nil {
