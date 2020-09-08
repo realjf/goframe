@@ -2,7 +2,7 @@ package utils
 
 import (
 	"fmt"
-	"goframe/crypto/md5"
+	"github.com/realjf/goframe/crypto/md5"
 	"net"
 	"net/http"
 	"os"

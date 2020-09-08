@@ -1,7 +1,7 @@
 package conv
 
 import (
-	"goframe/encoding/binary"
+	"github.com/realjf/goframe/encoding/binary"
 	"testing"
 )
 

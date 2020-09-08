@@ -2,12 +2,13 @@ package control
 
 import (
 	"fmt"
-	"goframe/config"
-	"goframe/exception"
-	"goframe/template"
-	"goframe/utils"
 	"log"
 	"net/http"
+
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/template"
+	"github.com/realjf/goframe/utils"
 )
 
 type IControl interface {

@@ -2,11 +2,12 @@ package db
 
 import (
 	"fmt"
+
 	"github.com/go-redis/redis"
-	"goframe/config"
-	"goframe/exception"
-	"goframe/middleware"
-	"goframe/utils"
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/middleware"
+	"github.com/realjf/goframe/utils"
 )
 
 var RedisClient *redis.Client

@@ -6,8 +6,8 @@ import (
 	"sync"
 
 	"github.com/BurntSushi/toml"
-	"goframe/exception"
-	"goframe/utils"
+	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/utils"
 )
 
 type IConfig interface {

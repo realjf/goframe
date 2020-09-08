@@ -2,12 +2,12 @@ package server
 
 import (
 	"errors"
-	"goframe/config"
-	"goframe/db"
-	"goframe/db/memcache"
-	"goframe/db/mysql"
-	"goframe/middleware"
-	"goframe/router"
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/db"
+	"github.com/realjf/goframe/db/memcache"
+	"github.com/realjf/goframe/db/mysql"
+	"github.com/realjf/goframe/middleware"
+	"github.com/realjf/goframe/router"
 	"golang.org/x/net/http2"
 	"log"
 	"net/http"

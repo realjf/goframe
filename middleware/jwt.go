@@ -1,19 +1,20 @@
 package middleware
 
 import (
-	"github.com/dgrijalva/jwt-go"
-	"github.com/gin-gonic/gin"
-	"goframe/utils"
-	"goframe/utils/conv"
 	"net/http"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
+	"github.com/gin-gonic/gin"
+	"github.com/realjf/goframe/utils"
+	"github.com/realjf/goframe/utils/conv"
 )
 
 const (
-	SUCCESS = 200
-	INVALID_PARAMS = 99
+	SUCCESS                        = 200
+	INVALID_PARAMS                 = 99
 	ERROR_AUTH_CHECK_TOKEN_TIMEOUT = 98
-	ERROR_AUTH_CHECK_TOKEN_FAIL = 97
+	ERROR_AUTH_CHECK_TOKEN_FAIL    = 97
 
 	ISSUER = "realjf"
 )
@@ -52,9 +53,9 @@ func JWT(next http.Handler) http.Handler {
 		if code != SUCCESS {
 			w.WriteHeader(http.StatusUnauthorized)
 			w.Write(conv.Bytes(gin.H{
-				"code": code,
+				"code":    code,
 				"message": "",
-				"data": data,
+				"data":    data,
 			}))
 			return
 		}
@@ -72,7 +73,7 @@ func GenerateToken(username, password string) (string, error) {
 		utils.EncodeMD5(password),
 		jwt.StandardClaims{
 			ExpiresAt: expireTime.Unix(),
-			Issuer: ISSUER,
+			Issuer:    ISSUER,
 		},
 	}
 

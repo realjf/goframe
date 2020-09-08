@@ -1,9 +1,10 @@
 package control
 
 import (
-	"goframe/config"
-	"goframe/template"
 	"net/http"
+
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/template"
 )
 
 type CtlIndex struct {

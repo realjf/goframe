@@ -2,8 +2,9 @@ package base64
 
 import (
 	"encoding/base64"
-	"goframe/utils/conv"
 	"io/ioutil"
+
+	"github.com/realjf/goframe/utils/conv"
 )
 
 func Encode(src []byte) []byte {

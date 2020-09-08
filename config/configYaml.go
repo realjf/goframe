@@ -2,11 +2,12 @@ package config
 
 import (
 	"fmt"
-	"goframe/exception"
-	"goframe/utils"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"sync"
+
+	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/utils"
+	"gopkg.in/yaml.v2"
 )
 
 type ConfigYaml struct {

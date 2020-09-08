@@ -1,8 +1,9 @@
 package memcache
 
 import (
-	"goframe/config"
 	"testing"
+
+	"github.com/realjf/goframe/config"
 )
 
 func TestNewMemcache(t *testing.T) {

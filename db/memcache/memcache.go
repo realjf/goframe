@@ -2,12 +2,13 @@ package memcache
 
 import (
 	"fmt"
-	"github.com/pangudashu/memcache"
-	"goframe/config"
-	"goframe/exception"
-	"goframe/middleware"
-	"goframe/utils"
 	"time"
+
+	"github.com/pangudashu/memcache"
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/middleware"
+	"github.com/realjf/goframe/utils"
 )
 
 var McClient *memcache.Memcache

@@ -1,7 +1,7 @@
 package api
 
 import (
-	"goframe/config"
+	"github.com/realjf/goframe/config"
 	"net/http"
 )
 

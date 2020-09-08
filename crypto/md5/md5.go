@@ -3,9 +3,10 @@ package md5
 import (
 	"crypto/md5"
 	"fmt"
-	"goframe/utils/conv"
 	"io"
 	"os"
+
+	"github.com/realjf/goframe/utils/conv"
 )
 
 func Encrypt(data interface{}) (encrypt string, err error) {
@@ -37,4 +38,3 @@ func EncryptFile(path string) (encrypt string, err error) {
 	}
 	return fmt.Sprintf("%x", h.Sum(nil)), nil
 }
-

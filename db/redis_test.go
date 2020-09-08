@@ -1,9 +1,10 @@
 package db
 
 import (
-	"goframe/config"
 	"testing"
 	"time"
+
+	"github.com/realjf/goframe/config"
 )
 
 func TestNewRedis(t *testing.T) {

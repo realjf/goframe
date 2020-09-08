@@ -3,9 +3,10 @@ package sha1
 import (
 	"crypto/sha1"
 	"encoding/hex"
-	"goframe/utils/conv"
 	"io"
 	"os"
+
+	"github.com/realjf/goframe/utils/conv"
 )
 
 func Encrypt(v interface{}) string {

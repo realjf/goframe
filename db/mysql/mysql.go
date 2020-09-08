@@ -3,12 +3,13 @@ package mysql
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
-	"goframe/config"
-	"goframe/exception"
-	"goframe/middleware"
-	"goframe/utils"
 	"time"
+
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/middleware"
+	"github.com/realjf/goframe/utils"
 )
 
 var (

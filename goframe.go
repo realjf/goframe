@@ -2,7 +2,8 @@ package main
 
 import (
 	"flag"
-	"goframe/server"
+
+	"github.com/realjf/goframe/server"
 )
 
 var (

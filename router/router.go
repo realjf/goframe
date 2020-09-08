@@ -3,8 +3,8 @@ package router
 import (
 	"flag"
 	"github.com/gorilla/mux"
-	"goframe/config"
-	"goframe/middleware"
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/middleware"
 	"net/http"
 )
 

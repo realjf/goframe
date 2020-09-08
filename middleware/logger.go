@@ -1,11 +1,12 @@
 package middleware
 
 import (
-	"github.com/op/go-logging"
-	"goframe/utils"
 	"net/http"
 	"os"
 	"regexp"
+
+	"github.com/op/go-logging"
+	"github.com/realjf/goframe/utils"
 )
 
 // Example format string. Everything except the message has a custom color

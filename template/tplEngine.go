@@ -2,7 +2,7 @@ package template
 
 import (
 	"encoding/json"
-	"goframe/exception"
+	"github.com/realjf/goframe/exception"
 	"html/template"
 	"net/http"
 )

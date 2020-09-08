@@ -1,9 +1,10 @@
 package router
 
 import (
-	"goframe/api"
-	"goframe/config"
 	"net/http"
+
+	"github.com/realjf/goframe/api"
+	"github.com/realjf/goframe/config"
 
 	"github.com/gorilla/mux"
 )

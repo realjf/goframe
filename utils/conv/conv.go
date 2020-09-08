@@ -3,7 +3,7 @@ package conv
 import (
 	"encoding/json"
 	"fmt"
-	"goframe/encoding/binary"
+	"github.com/realjf/goframe/encoding/binary"
 	"reflect"
 	"strconv"
 	"strings"

@@ -1,8 +1,8 @@
 package control
 
 import (
-	"goframe/config"
-	"goframe/template"
+	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/template"
 	"net/http"
 )
 
