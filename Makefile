@@ -1,5 +1,5 @@
 build:
-	go build main.go
+	go build github.com/realjf/goframe
 
 run:
-	go run main.go
+	

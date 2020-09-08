@@ -1,4 +1,4 @@
-module goframe
+module github.com/realjf/goframe
 
 require (
 	github.com/BurntSushi/toml v0.3.1
