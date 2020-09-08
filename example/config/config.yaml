@@ -1,0 +1,32 @@
+cluster:
+  host: "dev.docker" # string
+  port: 8005 # int
+  log: true # bool 日志记录
+  auth: false # bool 鉴权
+  httpVersion: "2.0" # string 1.0,1.1,2.0
+  openssl: false # 开启https支持，需要配置证书
+  tls:
+    cert: "config/cert.pem" # relative to src dir
+    key: "config/key.pem"
+
+# database
+mysql:
+  host: "localhost"
+  port: 3306
+  username: "root"
+  password: "neyo123"
+  dbname: "4399_kube"
+  charset: "utf8"
+  maxOpenConns: 1000
+
+# redis
+redis:
+  host: "192.168.37.133"
+  port: 6379 # int
+  timeout: 60
+
+# memcache
+memcache:
+  host: "192.168.37.133"
+  port: 11211
+
