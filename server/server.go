@@ -2,6 +2,11 @@ package server
 
 import (
 	"errors"
+	"log"
+	"net/http"
+	"strings"
+	"time"
+
 	"github.com/realjf/goframe/config"
 	"github.com/realjf/goframe/db"
 	"github.com/realjf/goframe/db/memcache"
@@ -9,17 +14,17 @@ import (
 	"github.com/realjf/goframe/middleware"
 	"github.com/realjf/goframe/router"
 	"golang.org/x/net/http2"
-	"log"
-	"net/http"
-	"strings"
-	"time"
+)
+
+var (
+	DefaultServer *Server
 )
 
 type Server struct {
 	ConfigPath string
-	server http.Server
-	Config config.IConfig
-	Router *router.Router
+	server     http.Server
+	Config     config.IConfig
+	Router     *router.Router
 }
 
 func (s *Server) SetAddress(addr string) {
@@ -30,6 +35,20 @@ func (s *Server) SetTimeout(timeout int) {
 	s.server.ReadTimeout = time.Duration(timeout) * time.Second
 	s.server.WriteTimeout = time.Duration(timeout) * time.Second
 	s.server.IdleTimeout = time.Duration(timeout) * time.Second
+}
+
+func NewServer(configPath string) *Server {
+	return &Server{
+		ConfigPath: configPath,
+	}
+}
+
+func NewDefaultServer() *Server {
+	if DefaultServer != nil {
+		return DefaultServer
+	}
+	DefaultServer = NewServer("./config/config.yaml")
+	return DefaultServer
 }
 
 func (s *Server) Run() {
@@ -89,7 +108,7 @@ func (s *Server) InitConfig(confPath string) {
 	// 确认文件后缀名，根据文件后缀名确定加载的文件
 	if strings.HasSuffix(confPath, "yaml") || strings.HasSuffix(confPath, "yml") {
 		s.Config = config.NewConfigYaml().LoadConfigFile(confPath)
-	}else if strings.HasSuffix(confPath, "toml") {
+	} else if strings.HasSuffix(confPath, "toml") {
 		s.Config = config.NewConfig().LoadConfigFile(confPath)
 	}
 }
@@ -108,6 +127,3 @@ func (s *Server) InitRedis() {
 func (s *Server) InitMemcached() {
 	memcache.NewMemcache(s.Config).Init()
 }
-
-
-

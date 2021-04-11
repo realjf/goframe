@@ -1,4 +1,4 @@
-package goframe
+package main
 
 import (
 	"flag"
@@ -25,16 +25,7 @@ func init() {
 	flag.Parse()
 }
 
-func NewServer(configPath string) *server.Server {
-	return &server.Server{
-		ConfigPath: configPath,
-	}
-}
-
-func DefaultServer() *server.Server {
-	if defaultServer != nil {
-		return defaultServer
-	}
-	defaultServer = NewServer("./config/config.yaml")
-	return defaultServer
+func main() {
+	srv := server.NewDefaultServer()
+	srv.Run()
 }
