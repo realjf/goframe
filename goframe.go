@@ -11,8 +11,6 @@ var (
 	ConfigPath string
 	CaCertPath string
 	CaKeyPath  string
-
-	defaultServer *server.Server
 )
 
 func init() {
