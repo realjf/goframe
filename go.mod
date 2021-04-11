@@ -1,5 +1,7 @@
 module github.com/realjf/goframe
 
+go 1.14
+
 require (
 	github.com/BurntSushi/toml v0.3.1
 	github.com/bitly/go-simplejson v0.5.0
@@ -21,5 +23,3 @@ require (
 	google.golang.org/appengine v1.6.5 // indirect
 	gopkg.in/yaml.v2 v2.2.4
 )
-
-go 1.13
