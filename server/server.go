@@ -16,10 +16,6 @@ import (
 	"golang.org/x/net/http2"
 )
 
-var (
-	DefaultServer *Server
-)
-
 type Server struct {
 	ConfigPath string
 	server     http.Server
@@ -35,20 +31,6 @@ func (s *Server) SetTimeout(timeout int) {
 	s.server.ReadTimeout = time.Duration(timeout) * time.Second
 	s.server.WriteTimeout = time.Duration(timeout) * time.Second
 	s.server.IdleTimeout = time.Duration(timeout) * time.Second
-}
-
-func NewServer(configPath string) *Server {
-	return &Server{
-		ConfigPath: configPath,
-	}
-}
-
-func NewDefaultServer() *Server {
-	if DefaultServer != nil {
-		return DefaultServer
-	}
-	DefaultServer = NewServer("./config/config.yaml")
-	return DefaultServer
 }
 
 func (s *Server) Run() {
@@ -87,6 +69,7 @@ func (s *Server) Start() {
 	} else {
 		s.server.ListenAndServe()
 	}
+	middleware.Logger.Logger.Info("Listen on: " + s.Config.GetAddress())
 }
 
 // 初始化日志

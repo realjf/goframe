@@ -1,4 +1,4 @@
-package main
+package goframe
 
 import (
 	"flag"
@@ -11,6 +11,8 @@ var (
 	ConfigPath string
 	CaCertPath string
 	CaKeyPath  string
+
+	DefaultServer *server.Server
 )
 
 func init() {
@@ -23,7 +25,16 @@ func init() {
 	flag.Parse()
 }
 
-func main() {
-	srv := server.NewDefaultServer()
-	srv.Run()
+func NewServer(configPath string) *server.Server {
+	return &server.Server{
+		ConfigPath: configPath,
+	}
+}
+
+func NewDefaultServer() *server.Server {
+	if DefaultServer != nil {
+		return DefaultServer
+	}
+	DefaultServer = NewServer("./config/config.yaml")
+	return DefaultServer
 }

@@ -1,5 +1,5 @@
 cluster:
-  host: "dev.docker" # string
+  host: "127.0.0.1" # string
   port: 8005 # int
   log: true # bool 日志记录
   auth: false # bool 鉴权
@@ -11,7 +11,7 @@ cluster:
 
 # database
 mysql:
-  host: "localhost"
+  host: "127.0.0.1"
   port: 3306
   username: "root"
   password: "neyo123"
@@ -21,12 +21,12 @@ mysql:
 
 # redis
 redis:
-  host: "192.168.37.133"
+  host: "127.0.0.1"
   port: 6379 # int
   timeout: 60
 
 # memcache
 memcache:
-  host: "192.168.37.133"
+  host: "127.0.0.1"
   port: 11211
 
