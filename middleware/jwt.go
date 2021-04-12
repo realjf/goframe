@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/dgrijalva/jwt-go"
+	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/realjf/goframe/utils"
 	"github.com/realjf/goframe/utils/conv"
