@@ -63,13 +63,13 @@ func (s *Server) InitServer() {
 }
 
 func (s *Server) Start() {
+	middleware.Logger.Logger.Info("Listen on: " + s.Config.GetAddress())
 	if s.Config.IsHttps() {
 		ca := s.Config.GetTSL()
 		s.server.ListenAndServeTLS(ca.Cert, ca.Key)
 	} else {
 		s.server.ListenAndServe()
 	}
-	middleware.Logger.Logger.Info("Listen on: " + s.Config.GetAddress())
 }
 
 // 初始化日志

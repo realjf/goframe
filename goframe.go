@@ -3,7 +3,7 @@ package goframe
 import (
 	"flag"
 
-	"github.com/realjf/goframe/inrernal/server"
+	"github.com/realjf/goframe/internal/server"
 )
 
 var (
