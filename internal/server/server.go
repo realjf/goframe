@@ -8,11 +8,11 @@ import (
 	"time"
 
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/db"
-	"github.com/realjf/goframe/db/memcache"
-	"github.com/realjf/goframe/db/mysql"
-	"github.com/realjf/goframe/middleware"
-	"github.com/realjf/goframe/router"
+	"github.com/realjf/goframe/internal/db"
+	"github.com/realjf/goframe/internal/db/memcache"
+	"github.com/realjf/goframe/internal/db/mysql"
+	"github.com/realjf/goframe/internal/middleware"
+	"github.com/realjf/goframe/internal/router"
 	"golang.org/x/net/http2"
 )
 

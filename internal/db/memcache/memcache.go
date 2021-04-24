@@ -6,7 +6,7 @@ import (
 
 	"github.com/pangudashu/memcache"
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/middleware"
+	"github.com/realjf/goframe/internal/middleware"
 	"github.com/realjf/goframe/pkg/exception"
 	"github.com/realjf/goframe/pkg/utils"
 )

@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/template"
+	"github.com/realjf/goframe/internal/template"
 )
 
 type CtlIndex struct {

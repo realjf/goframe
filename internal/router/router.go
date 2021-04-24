@@ -2,10 +2,11 @@ package router
 
 import (
 	"flag"
+	"net/http"
+
 	"github.com/gorilla/mux"
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/middleware"
-	"net/http"
+	"github.com/realjf/goframe/internal/middleware"
 )
 
 type Router struct {

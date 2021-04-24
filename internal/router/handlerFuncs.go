@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/control"
+	"github.com/realjf/goframe/internal/control"
 
 	"github.com/gorilla/mux"
 )

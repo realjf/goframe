@@ -3,8 +3,8 @@ package router
 import (
 	"net/http"
 
-	"github.com/realjf/goframe/api"
 	"github.com/realjf/goframe/config"
+	"github.com/realjf/goframe/internal/api"
 
 	"github.com/gorilla/mux"
 )
