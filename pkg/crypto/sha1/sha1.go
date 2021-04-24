@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/realjf/goframe/utils/conv"
+	"github.com/realjf/goframe/pkg/utils/conv"
 )
 
 func Encrypt(v interface{}) string {

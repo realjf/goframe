@@ -6,8 +6,8 @@ import (
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"github.com/realjf/goframe/utils"
-	"github.com/realjf/goframe/utils/conv"
+	"github.com/realjf/goframe/pkg/utils"
+	"github.com/realjf/goframe/pkg/utils/conv"
 )
 
 const (

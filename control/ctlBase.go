@@ -6,9 +6,9 @@ import (
 	"net/http"
 
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/exception"
+	"github.com/realjf/goframe/pkg/exception"
+	"github.com/realjf/goframe/pkg/utils"
 	"github.com/realjf/goframe/template"
-	"github.com/realjf/goframe/utils"
 )
 
 type IControl interface {

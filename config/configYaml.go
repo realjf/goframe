@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"sync"
 
-	"github.com/realjf/goframe/exception"
-	"github.com/realjf/goframe/utils"
+	"github.com/realjf/goframe/pkg/exception"
+	"github.com/realjf/goframe/pkg/utils"
 	"gopkg.in/yaml.v2"
 )
 

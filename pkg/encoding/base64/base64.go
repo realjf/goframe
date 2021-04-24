@@ -4,7 +4,7 @@ import (
 	"encoding/base64"
 	"io/ioutil"
 
-	"github.com/realjf/goframe/utils/conv"
+	"github.com/realjf/goframe/pkg/utils/conv"
 )
 
 func Encode(src []byte) []byte {

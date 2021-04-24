@@ -1,8 +1,9 @@
 package conv
 
 import (
-	"github.com/realjf/goframe/encoding/binary"
 	"testing"
+
+	"github.com/realjf/goframe/pkg/encoding/binary"
 )
 
 var value = binary.Encode(123456789)

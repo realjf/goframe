@@ -3,7 +3,7 @@ package crc32
 import (
 	"hash/crc32"
 
-	"github.com/realjf/goframe/utils/conv"
+	"github.com/realjf/goframe/pkg/utils/conv"
 )
 
 func Encrypt(v interface{}) uint32 {

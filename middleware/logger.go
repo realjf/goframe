@@ -6,7 +6,7 @@ import (
 	"regexp"
 
 	"github.com/op/go-logging"
-	"github.com/realjf/goframe/utils"
+	"github.com/realjf/goframe/pkg/utils"
 )
 
 // Example format string. Everything except the message has a custom color

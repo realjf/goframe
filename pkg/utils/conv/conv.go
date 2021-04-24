@@ -3,10 +3,11 @@ package conv
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/realjf/goframe/encoding/binary"
 	"reflect"
 	"strconv"
 	"strings"
+
+	"github.com/realjf/goframe/pkg/encoding/binary"
 )
 
 var (
@@ -27,7 +28,6 @@ type apiString interface {
 type apiError interface {
 	Error() string
 }
-
 
 func Byte(v interface{}) byte {
 	if val, ok := v.(byte); ok {
@@ -108,10 +108,10 @@ func String(v interface{}) string {
 			return f.String()
 		} else if f, ok := value.(apiError); ok {
 			return f.Error()
-		}else {
+		} else {
 			if jsonContent, err := json.Marshal(value); err != nil {
 				return fmt.Sprint(value)
-			}else{
+			} else {
 				return string(jsonContent)
 			}
 		}
@@ -249,7 +249,7 @@ func Int64(v interface{}) int64 {
 			}
 		}
 		// 十进制
-		if val, e := strconv.ParseInt(s,10, 64); e == nil {
+		if val, e := strconv.ParseInt(s, 10, 64); e == nil {
 			return val
 		}
 		// 64位浮点数

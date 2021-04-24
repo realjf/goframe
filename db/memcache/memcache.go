@@ -6,9 +6,9 @@ import (
 
 	"github.com/pangudashu/memcache"
 	"github.com/realjf/goframe/config"
-	"github.com/realjf/goframe/exception"
 	"github.com/realjf/goframe/middleware"
-	"github.com/realjf/goframe/utils"
+	"github.com/realjf/goframe/pkg/exception"
+	"github.com/realjf/goframe/pkg/utils"
 )
 
 var McClient *memcache.Memcache

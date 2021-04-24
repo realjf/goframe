@@ -2,7 +2,7 @@ package utils
 
 import (
 	"fmt"
-	"github.com/realjf/goframe/crypto/md5"
+	"log"
 	"net"
 	"net/http"
 	"os"
@@ -12,8 +12,9 @@ import (
 	"strings"
 	"time"
 	"unicode"
-	"log"
+
 	"github.com/bitly/go-simplejson"
+	"github.com/realjf/goframe/pkg/crypto/md5"
 )
 
 func createDir(path string) error {
@@ -124,7 +125,7 @@ func ToInt64(value interface{}) int64 {
 		e, err1 := strconv.ParseFloat(val.String(), 64)
 		if err1 != nil {
 			d, err = strconv.ParseInt(val.String(), 10, 64)
-		}else{
+		} else {
 			d = int64(e)
 		}
 	default:
@@ -151,7 +152,7 @@ func ToInt(value interface{}) int {
 		e, err1 := strconv.ParseFloat(val.String(), 32)
 		if err1 != nil {
 			d, err = strconv.Atoi(val.String())
-		}else{
+		} else {
 			d = int(e)
 		}
 
