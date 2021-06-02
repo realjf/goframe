@@ -34,6 +34,9 @@ func (s *Server) SetTimeout(timeout int) {
 }
 
 func (s *Server) Run() {
+	// 加载.env文件配置
+	s.InitEnv()
+
 	s.InitConfig(s.ConfigPath)
 	s.InitLogger()
 
@@ -109,4 +112,9 @@ func (s *Server) InitRedis() {
 // 初始化memcache
 func (s *Server) InitMemcached() {
 	memcache.NewMemcache(s.Config).Init()
+}
+
+// 初始化.env配置
+func (s *Server) InitEnv() {
+	config.SetupEnv()
 }

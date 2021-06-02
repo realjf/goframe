@@ -1,0 +1,8 @@
+[[server]]
+
+
+[[mysql]]
+user = "root"
+pass = "123456"
+host = "localhost"
+name = "goframe"
