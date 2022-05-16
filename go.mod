@@ -22,5 +22,5 @@ require (
 	github.com/pkg/errors v0.9.1
 	golang.org/x/net v0.0.0-20200114155413-6afb5195e5aa
 	google.golang.org/appengine v1.6.5 // indirect
-	gopkg.in/yaml.v2 v2.2.4
+	gopkg.in/yaml.v2 v2.2.8
 )
