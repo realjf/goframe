@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/golang-jwt/jwt"
 	"github.com/realjf/goframe/pkg/utils"
 	"github.com/realjf/goframe/pkg/utils/conv"
 )
