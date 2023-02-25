@@ -7,13 +7,14 @@ import (
 	"strings"
 	"time"
 
+	"golang.org/x/net/http2"
+
 	"github.com/realjf/goframe/config"
 	"github.com/realjf/goframe/internal/db"
 	"github.com/realjf/goframe/internal/db/memcache"
 	"github.com/realjf/goframe/internal/db/mysql"
 	"github.com/realjf/goframe/internal/middleware"
 	"github.com/realjf/goframe/internal/router"
-	"golang.org/x/net/http2"
 )
 
 type Server struct {
