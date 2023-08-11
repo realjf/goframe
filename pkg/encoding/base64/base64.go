@@ -2,7 +2,7 @@ package base64
 
 import (
 	"encoding/base64"
-	"io/ioutil"
+	"os"
 
 	"github.com/realjf/goframe/pkg/utils/conv"
 )
@@ -29,7 +29,7 @@ func EncodeToString(src []byte) string {
 
 // base64加密文件
 func EncodeFile(path string) ([]byte, error) {
-	content, err := ioutil.ReadFile(path)
+	content, err := os.ReadFile(path)
 	if err != nil {
 		return nil, err
 	}

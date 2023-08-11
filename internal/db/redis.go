@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/go-redis/redis"
+
 	"github.com/realjf/goframe/config"
 	"github.com/realjf/goframe/internal/middleware"
 	"github.com/realjf/goframe/pkg/exception"
@@ -13,15 +14,19 @@ import (
 var RedisClient *redis.Client
 
 type RedisDriver struct {
-	Host string
-	Port string
+	Host     string
+	Port     string
+	Pass     string
+	Username string
 }
 
 func NewRedis(config config.IConfig) *RedisDriver {
 	configData := config.GetConfigData()
 	return &RedisDriver{
-		Host: configData.Redis.Host,
-		Port: utils.ToString(configData.Redis.Port),
+		Host:     configData.Redis.Host,
+		Port:     utils.ToString(configData.Redis.Port),
+		Pass:     configData.Redis.Pass,
+		Username: configData.Redis.Username,
 	}
 }
 

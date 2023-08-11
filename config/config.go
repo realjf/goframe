@@ -2,10 +2,11 @@ package config
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"sync"
 
 	"github.com/BurntSushi/toml"
+
 	"github.com/realjf/goframe/pkg/exception"
 	"github.com/realjf/goframe/pkg/utils"
 )
@@ -42,7 +43,7 @@ type ConfigData struct {
 		Port        int
 		Log         bool   // 日志记录
 		Auth        bool   // 鉴权
-		HttpVersion string `toml:"httpVersion",yaml:"httpVersion"` // 1.0, 1.1, 2.0
+		HttpVersion string `toml:"httpVersion" yaml:"httpVersion"` // 1.0, 1.1, 2.0
 		Openssl     bool   // https
 		TLS         struct {
 			Cert string
@@ -56,16 +57,18 @@ type ConfigData struct {
 		Password     string
 		Dbname       string
 		Charset      string
-		MaxOpenConns int `toml:"maxOpenConns",yaml:"maxOpenConns"`
+		MaxOpenConns int `toml:"maxOpenConns" yaml:"maxOpenConns"`
 	}
 	Memcache struct {
 		Host string
 		Port int
 	}
 	Redis struct {
-		Host    string
-		Port    int
-		Timeout int
+		Host     string
+		Port     int
+		Username string
+		Pass     string
+		Timeout  int
 	}
 }
 
@@ -89,7 +92,7 @@ func (c *Config) LoadConfigFile(path string) IConfig {
 		}
 		c.Path = path
 		// 检查文件是否存在
-		fileData, err := ioutil.ReadFile(path)
+		fileData, err := os.ReadFile(path)
 		if err != nil || len(fileData) <= 0 {
 			exception.CheckError(exception.NewError("read toml config file error"), 0)
 		}
@@ -164,10 +167,7 @@ func (c *Config) IsAuth() bool {
 }
 
 func (c *Config) IsHttp2() bool {
-	if c.Data.Cluster.HttpVersion == "2.0" {
-		return true
-	}
-	return false
+	return c.Data.Cluster.HttpVersion == "2.0"
 }
 
 func (c *Config) GetHttpVersion() string {

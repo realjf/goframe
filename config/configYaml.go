@@ -2,12 +2,13 @@ package config
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"sync"
+
+	"gopkg.in/yaml.v2"
 
 	"github.com/realjf/goframe/pkg/exception"
 	"github.com/realjf/goframe/pkg/utils"
-	"gopkg.in/yaml.v2"
 )
 
 type ConfigYaml struct {
@@ -34,7 +35,7 @@ func (c *ConfigYaml) LoadConfigFile(path string) IConfig {
 		}
 		c.Path = path
 		// 检查文件是否存在
-		fileData, err := ioutil.ReadFile(path)
+		fileData, err := os.ReadFile(path)
 		if err != nil || len(fileData) <= 0 {
 			exception.CheckError(exception.NewError("read yaml config file error"), 0)
 		}
@@ -58,7 +59,7 @@ func (c *ConfigYaml) ReloadConfigFile() {
 	c.Once.Do(func() {
 		c.Lock.Lock()
 		defer c.Lock.Unlock()
-		fileData, err := ioutil.ReadFile(c.Path)
+		fileData, err := os.ReadFile(c.Path)
 		if err != nil || len(fileData) <= 0 {
 			exception.CheckError(exception.NewError("read yaml config file error"), 0)
 		}
